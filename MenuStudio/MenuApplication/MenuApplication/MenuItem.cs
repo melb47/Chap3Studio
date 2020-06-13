@@ -18,5 +18,31 @@ namespace MenuApplication
             Category = category;
             IsNew = isNew;
         }
+        public string IsThisNew()
+        {
+            if (IsNew)
+            {
+                return "This item is new!";
+            }
+            else
+            {
+                return "This items is not new";
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is MenuItem item &&
+                   Description == item.Description;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Description);
+        }
+        public override string ToString()
+        {
+            return $"Description: {Description}\nPrice: {Price}\nCategory: {Category}\nThis is new: {IsNew}\n";
+        }
     }
 }
